@@ -1,0 +1,32 @@
+ALGORITHM valid
+VAR
+    wrong: BOOLEAN := FALSE;
+    nb_par: INTEGER :=0;
+BEGIN
+    
+    WHILE (c <> '#') DO
+        Read(c);
+        IF ((NOT isDigit(c)) OR (c<>'+' AND c<> '-' AND c<>'*' AND c<>'/') THEN
+            
+            wrong:= TRUE;
+        END_IF
+
+        IF (c='(') THEN
+            nb_par:= nb_par+1;
+        END_IF
+
+        IF (c=')') THEN
+        
+            nb_par:= nb_par-1
+        END_IF
+
+    END_WHILE
+
+    IF (wrong= FALSE AND nb_par=0) THEN
+        
+        write(" This is a valid expression");
+        ELSE
+        write("This is not a valid expression")
+    END_IF
+END
+
